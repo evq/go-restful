@@ -5,7 +5,7 @@ package restful
 // that can be found in the LICENSE file.
 
 import (
-	"net/http"
+	//"net/http"
 )
 
 // DefaultContainer is a restful.Container that uses http.DefaultServeMux
@@ -13,7 +13,7 @@ var DefaultContainer *Container
 
 func init() {
 	DefaultContainer = NewContainer()
-	DefaultContainer.ServeMux = http.DefaultServeMux
+	//DefaultContainer.ServeMux = http.DefaultServeMux
 }
 
 // If set the true then panics will not be caught to return HTTP 500.

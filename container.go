@@ -12,14 +12,15 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/gorilla/mux"
 	"github.com/emicklei/go-restful/log"
 )
 
 // Container holds a collection of WebServices and a http.ServeMux to dispatch http requests.
-// The requests are further dispatched to routes of WebServices using a RouteSelector
+// The requests are further dispatched to routes of WebServices using a RouteSelector/config
 type Container struct {
 	webServices            []*WebService
-	ServeMux               *http.ServeMux
+	ServeMux               *mux.Router
 	isRegisteredOnRoot     bool
 	containerFilters       []FilterFunction
 	doNotRecover           bool // default is false
@@ -33,7 +34,7 @@ type Container struct {
 func NewContainer() *Container {
 	return &Container{
 		webServices:            []*WebService{},
-		ServeMux:               http.NewServeMux(),
+		ServeMux:               mux.NewRouter(),
 		isRegisteredOnRoot:     false,
 		containerFilters:       []FilterFunction{},
 		doNotRecover:           false,
@@ -85,10 +86,10 @@ func (c *Container) EnableContentEncoding(enabled bool) {
 func (c *Container) Add(service *WebService) *Container {
 	// If registered on root then no additional specific mapping is needed
 	if !c.isRegisteredOnRoot {
-		pattern := c.fixedPrefixPath(service.RootPath())
+		pattern := service.RootPath()
 		// check if root path registration is needed
 		if "/" == pattern || "" == pattern {
-			c.ServeMux.HandleFunc("/", c.dispatch)
+			c.ServeMux.PathPrefix("/").HandlerFunc(c.dispatch)
 			c.isRegisteredOnRoot = true
 		} else {
 			// detect if registration already exists
@@ -100,10 +101,7 @@ func (c *Container) Add(service *WebService) *Container {
 				}
 			}
 			if !alreadyMapped {
-				c.ServeMux.HandleFunc(pattern, c.dispatch)
-				if !strings.HasSuffix(pattern, "/") {
-					c.ServeMux.HandleFunc(pattern+"/", c.dispatch)
-				}
+				c.ServeMux.PathPrefix(pattern).HandlerFunc(c.dispatch)
 			}
 		}
 	}
