@@ -3,14 +3,14 @@ package swagger
 import (
 	"fmt"
 
-	"github.com/emicklei/go-restful"
-	// "github.com/emicklei/hopwatch"
+	"github.com/evq/go-restful"
+	// "github.com/evq/hopwatch"
 	"net/http"
 	"reflect"
 	"sort"
 	"strings"
 
-	"github.com/emicklei/go-restful/log"
+	"github.com/evq/go-restful/log"
 )
 
 type SwaggerService struct {

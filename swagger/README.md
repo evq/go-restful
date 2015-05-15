@@ -17,7 +17,7 @@ Now, you can install the Swagger WebService for serving the Swagger specificatio
 		WebServices:    restful.RegisteredWebServices(),
 		ApiPath:        "/apidocs.json",
 		SwaggerPath:     "/apidocs/",
-		SwaggerFilePath: "/Users/emicklei/Projects/swagger-ui/dist"}
+		SwaggerFilePath: "/Users/evq/Projects/swagger-ui/dist"}
 	swagger.InstallSwaggerService(config)		
 	
 	

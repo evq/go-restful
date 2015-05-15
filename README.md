@@ -34,7 +34,7 @@ func (u UserResource) findUser(request *restful.Request, response *restful.Respo
 }
 ```
 	
-[Full API of a UserResource](https://github.com/emicklei/go-restful/tree/master/examples/restful-user-resource.go) 
+[Full API of a UserResource](https://github.com/evq/go-restful/tree/master/examples/restful-user-resource.go) 
 		
 ### Features
 
@@ -57,15 +57,15 @@ func (u UserResource) findUser(request *restful.Request, response *restful.Respo
 	
 ### Resources
 
-- [Documentation on godoc.org](http://godoc.org/github.com/emicklei/go-restful)
-- [Code examples](https://github.com/emicklei/go-restful/tree/master/examples)
+- [Documentation on godoc.org](http://godoc.org/github.com/evq/go-restful)
+- [Code examples](https://github.com/evq/go-restful/tree/master/examples)
 - [Example posted on blog](http://ernestmicklei.com/2012/11/24/go-restful-first-working-example/)
 - [Design explained on blog](http://ernestmicklei.com/2012/11/11/go-restful-api-design/)
-- [sourcegraph](https://sourcegraph.com/github.com/emicklei/go-restful)
-- [gopkg.in](https://gopkg.in/emicklei/go-restful.v1)
-- [showcase: Mora - MongoDB REST Api server](https://github.com/emicklei/mora)
+- [sourcegraph](https://sourcegraph.com/github.com/evq/go-restful)
+- [gopkg.in](https://gopkg.in/evq/go-restful.v1)
+- [showcase: Mora - MongoDB REST Api server](https://github.com/evq/mora)
 
-[![Build Status](https://drone.io/github.com/emicklei/go-restful/status.png)](https://drone.io/github.com/emicklei/go-restful/latest)
+[![Build Status](https://drone.io/github.com/evq/go-restful/status.png)](https://drone.io/github.com/emicklei/go-restful/latest)
 
 (c) 2012 - 2015, http://ernestmicklei.com. MIT License
 
