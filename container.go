@@ -12,8 +12,8 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/gorilla/mux"
 	"github.com/evq/go-restful/log"
+	"github.com/gorilla/mux"
 )
 
 // Container holds a collection of WebServices and a http.ServeMux to dispatch http requests.
@@ -144,6 +144,17 @@ func logStackOnRecover(panicReason interface{}, httpWriter http.ResponseWriter) 
 // calls resp.WriteErrorString(err.Code, err.Message)
 func writeServiceError(err ServiceError, req *Request, resp *Response) {
 	resp.WriteErrorString(err.Code, err.Message)
+}
+
+// Dispatch the incoming Http Request to a matching WebService.
+func (c *Container) Dispatch(httpWriter http.ResponseWriter, httpRequest *http.Request) {
+	if httpWriter == nil {
+		panic("httpWriter cannot be nil")
+	}
+	if httpRequest == nil {
+		panic("httpRequest cannot be nil")
+	}
+	c.dispatch(httpWriter, httpRequest)
 }
 
 // Dispatch the incoming Http Request to a matching WebService.
